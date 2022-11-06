@@ -34,3 +34,58 @@
 // }).listen(4000,() => {
 //   console.log('server is listening on port 4000');
 // })
+//practice cont
+const http = require('http')
+const fs = require('fs')
+const formidable = require('formidable')
+
+http.createServer((req,res) => {
+if(req.url === '/resultUpload'){
+  const form = new formidable.IncomingForm()
+  form.parse()
+
+}
+else{
+  res.writeHead(201,'getting files',{'content-head' : 'text/html'})
+  res.write('<form action="/resultUpload" method = "post"  enctype = "multipart/text">')
+  res.write('<input type="file" name="result"> <br/> <br/>')
+  res.write('<input type="submit">')
+  res.end()
+}
+}).listen(5000,()=>{
+  console.log('server is listening on port 5000');
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
