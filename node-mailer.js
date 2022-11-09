@@ -23,36 +23,3 @@
 //     console.log('please check,we just sent you an email' + info.response);
 //   }
 // })
-const mysql = require('mysql')
-
-const con = mysql.createConnection({
-  host:'localhost',
-  user:'root',
-  password:'your_new_password',
-  database:'Student'
-})
-con.connect((err) =>{
-  if(err){
-    console.log(err);
-  }
-  else{
-    console.log('connected successfully');
-    // con.query('CREATE DATABASE Student', (err) =>{
-    //   if(err){
-    //     console.log(err);
-    //   }
-    //   else{
-    //     console.log('Database created successfully');
-   //    }
-    con.query("CREATE TABLE studentFiles(name VARCHAR(255),address VARCHAR(255))", (err) => {
-if(err){
-  console.log(err);
-}
-else{
-  console.log('Table created successfully');
-}
-    })  
-    }
-
-  }
-)

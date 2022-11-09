@@ -6,12 +6,12 @@
 // const formidable = require('formidable')
 
 // http.createServer((req,res) => {
-// if(req.url === "/fileUpload"){
+// if(req.emit === "/fileUpload"){
 //   const form = new formidable.IncomingForm()
 //   form.parse(req,(err,fields,files) => {
-// //  console.log(files);
-// const oldPath = files.User.filepath
-// const newPath = 'C:/Users/NOIBISJUNIOR/Desktop' + 'file from frontend'
+//  console.log(fields);
+// const oldPath = files.login.filepath
+// const newPath = 'C:\Users\NOIBISJUNIOR\Desktop';
 // fs.rename(oldPath,newPath,(err) => {
 //   if(err){
 //     console.log(err);
@@ -25,58 +25,50 @@
 //   })
 // }
 // else{
-//   res.writeHead(200,'ok',{'content-Type' : 'text/html'})
-//   res.write('<form action= "/fileUpload"  method="post" enctype="multipart/form-data">')
-//   res.write('<input type="file" name="User"> <br/> <br/>')
-//   res.write('<input type="submit">')
-//   res.end()
+//   // res.writeHead(200,'ok',{'content-Type' : 'text/html'})
+//   // res.write('<form action= "/fileUpload"  method="post" enctype="multipart/form-data">')
+//   // res.write('<input type="file" name="User"> <br/> <br/>')
+//   });
+   
 // }
 // }).listen(4000,() => {
 //   console.log('server is listening on port 4000');
 // })
-//practice cont
+//practice cont'd
 const http = require('http')
 const fs = require('fs')
 const formidable = require('formidable')
 
 http.createServer((req,res) => {
-if(req.url === '/resultUpload'){
+if(req.url === '/Submit'){
   const form = new formidable.IncomingForm()
-  form.parse()
+  form.parse(req,(err,fields,files) => {
+    console.log(files);
+    const oldPath = 'files.user.filepath'
+    const newPath = 'C:\Users\NOIBISJUNIOR\Desktop';  //files.user.originalFilename;
 
+    fs.rename(oldPath,newPath,() => {
+      if(err){
+        console.log(err);
+      }
+      else{
+        console.log('succcessfully submitted the file');
+        res.write('your file has being submitted successfully')
+        res.end()
+      }
+    })
+  })
 }
 else{
-  res.writeHead(201,'getting files',{'content-head' : 'text/html'})
-  res.write('<form action="/resultUpload" method = "post"  enctype = "multipart/text">')
-  res.write('<input type="file" name="result"> <br/> <br/>')
-  res.write('<input type="submit">')
+  res.writeHead(200,'ok',{'content-type' : 'text/html'})
+  res.write("<form action = '/Submit' method='post' enctype = 'multipart/form-data'>")
+  res.write("<input type='file' name='user'> <br/> <br/>")
+  res.write("<button type='Submit'> Submit </button>")
   res.end()
 }
-}).listen(5000,()=>{
-  console.log('server is listening on port 5000');
+}).listen(7000,() => {
+  console.log('Server is listening on port 7000');
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Please Login</h2>
+        <form action="http://localhost:7000/fileUpload" method="post" name="login">
+        <div class="form-control">
+            <input type="email" required>
+            <label>Email</label>
+        </div>
+
+        <div class="form-control">
+            <input type="password" required>
+            <label>password</label>
+        </div>
+        <!-- <div class="form-control"> -->
+        <button  type ='submit' formaction ='http://localhost:7000/fileUpload' class="btn">Login</button>
+        <!-- </div> -->
+        <p class="text">Don't have an account,please <a href="#">register!</a></p>
+        </form>
+    </div>
+    <script src="post-method.js"></script>
+    <script src="server-module.js"></script>
+</body>
+</html>
